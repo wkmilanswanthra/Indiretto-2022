@@ -10,13 +10,14 @@
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDneRbRxOkFUHB4rjl1DlcfZp_vPoUqgrU",
-    authDomain: "datastorm-1c503.firebaseapp.com",
-    projectId: "datastorm-1c503",
-    storageBucket: "datastorm-1c503.appspot.com",
-    messagingSenderId: "892551267358",
-    appId: "1:892551267358:web:f20b30701971529b09da0f",
-    measurementId: "G-Z7H28PYZHC"
+    apiKey: "AIzaSyAea2eh18zsrKWjcKuBCoVq8qGns-x-Xs8",
+    authDomain: "indiretto-a2516.firebaseapp.com",
+    databaseURL: "https://indiretto-a2516-default-rtdb.firebaseio.com",
+    projectId: "indiretto-a2516",
+    storageBucket: "indiretto-a2516.appspot.com",
+    messagingSenderId: "950979902544",
+    appId: "1:950979902544:web:652e58ebeea76ddbda6555",
+    measurementId: "G-NPN7DEXW95"
 };
 
 // Initialize Firebase
@@ -30,7 +31,7 @@ let teamName = "";
 let validAns = [];
 
 // variable for the solution document
-let solution = "team-x";
+let solution = "solution";
 
 
 //  variables timer functions
@@ -82,7 +83,7 @@ function addOnclickToBut() {
                             disableInput();
                             pauseTimer();
                             showEle(document.getElementById("submit-loader"));
-                            checkSubStatSub(db.collection("indiretto").doc(teamName));
+                            checkSubStatSub(db.collection("crossword_puzzle").doc(teamName));
                         }
 
                     },
@@ -99,7 +100,7 @@ function addOnclickToBut() {
 // save button click listener
     document.getElementById("save-btn").onclick = function () {
         showEle(document.getElementById("save-loader"));
-        checkSubStatSav(db.collection("indiretto").doc(teamName));
+        checkSubStatSav(db.collection("crossword_puzzle").doc(teamName));
     };
 }
 
@@ -108,7 +109,7 @@ function submit(cond) {
     // send a copy to db
     let sol = convert1D(answer());
     if (!cond) {
-        db.collection("indiretto").doc(teamName).update({
+        db.collection("crossword_puzzle").doc(teamName).update({
             duration: timeToString(elapsedTime),
             endTime: Date.now(),
             solution: sol,
@@ -132,7 +133,7 @@ function submit(cond) {
             });
 
         // get from db
-        let docRef = db.collection("indiretto").doc(solution);
+        let docRef = db.collection("crossword_puzzle").doc(solution);
         let impt = []
         docRef.get().then((doc) => {
             if (doc.exists) {
@@ -176,7 +177,7 @@ function submit(cond) {
 function save(cond) {
     if (!cond) {
         let sol = convert1D(answer());
-        db.collection("indiretto").doc(teamName).update({
+        db.collection("crossword_puzzle").doc(teamName).update({
             solution: sol,
         })
             .then((docRef) => {
@@ -396,7 +397,7 @@ function checkSolution(impt, userAns, impt1D) {
             break;
         }
     }
-    db.collection("indiretto").doc(teamName).update({
+    db.collection("crossword_puzzle").doc(teamName).update({
         validAns: validAns
     })
         .then((docRef) => {
@@ -411,7 +412,7 @@ function checkSolution(impt, userAns, impt1D) {
 
 // load save data
 async function loadSave() {
-    let docRef = db.collection("indiretto").doc(teamName);
+    let docRef = db.collection("crossword_puzzle").doc(teamName);
     let impt = []
     await docRef.get().then((doc) => {
         if (doc.exists) {
@@ -429,7 +430,7 @@ async function loadSave() {
                 duration = doc.data().duration;
                 print(doc.data().duration);
                 showNextBtn();
-                db.collection("indiretto").doc(solution).get().then((doc2) => {
+                db.collection("crossword_puzzle").doc(solution).get().then((doc2) => {
                     if (doc2.exists) {
                         dispAns(doc2.data().solution);
                         dispCorr(doc.data().validAns);
@@ -459,7 +460,7 @@ async function loadSave() {
             document.getElementById("start-btn").onclick = function () {
                 startTime = Date.now()
 
-                let docRef = db.collection("indiretto").doc(teamName);
+                let docRef = db.collection("crossword_puzzle").doc(teamName);
                 docRef.get().then((doc2) => {
                     if (doc2.exists) {
                         startTimer(doc2.data().startTime);
@@ -470,7 +471,7 @@ async function loadSave() {
                         hideEle(document.getElementById("start-loader"));
                         hideEle(document.getElementById("start-btn"));
                     } else {
-                        db.collection("indiretto").doc(teamName).set({
+                        db.collection("crossword_puzzle").doc(teamName).set({
                             startTime: startTime
                         })
                             .then((docRef) => {
@@ -738,7 +739,7 @@ function dispCorr(ans) {
 
 // upload time to db
 async function uploadStartTime(startTime) {
-    db.collection("indiretto").doc(teamName).update({
+    db.collection("crossword_puzzle").doc(teamName).update({
         startTime: startTime
     })
         .then((docRef) => {
