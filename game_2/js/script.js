@@ -11,7 +11,7 @@ if(savedAns){
 if(game_over) window.location.replace("./evaluate.html"); 
 
 window.onload = function () {
- // document.addEventListener('contextmenu', event => event.preventDefault());
+  document.addEventListener('contextmenu', event => event.preventDefault());
   var totalSecs = localStorage.getItem('totalSecs');
   if(totalSecs){
     console.log("Total secs",totalSecs);
