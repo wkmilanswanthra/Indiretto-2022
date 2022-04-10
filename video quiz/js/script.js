@@ -28,7 +28,7 @@ import {
 
 const db = getFirestore();
 localStorage.setItem("group","Nimash");
-var teamname = localStorage.getItem('group');
+var teamName = localStorage.getItem('group');
 
 //krish
 
