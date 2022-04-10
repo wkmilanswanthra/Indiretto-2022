@@ -156,6 +156,7 @@ next_question.addEventListener("click", () => {
         points.innerHTML = `You Got ${correct} Out Of ${MCQS.length}`;
         result.style.display = "block";
         tot = correct;
+        localStorage.setItem("totalMarksRiddle",tot);
         console.log(tot);
     }
     for (i = 0; i <= 3; i++) {

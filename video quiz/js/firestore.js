@@ -1,3 +1,6 @@
+ console.log("firestore loaded");
+ 
+ 
  //krish
  // Import the functions you need from the SDKs you need
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -27,6 +30,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 
 const db = getFirestore();
+
 localStorage.setItem("group","Nimash");
 var teamName = localStorage.getItem('group');
 
@@ -35,18 +39,28 @@ var teamName = localStorage.getItem('group');
 //krish
 
 async function sendData(){
+    var marks = localStorage.getItem("totalMarksRiddle");
     var ref = collection(db,"riddle");
 
     const docRef = await addDoc(
         ref, {
             TeamName: teamName,
-            Marks:tot
+            Marks:marks
         }
     )
     .then(()=>{
         alert("data added successfully");
     })
     .catch((error)=>{
-        alert("unsuccessfull, error:"+error);
+        alert("unsuccessfull, error:" + error);
     })
 }
+
+let quit = document.querySelector("#quit");
+
+
+//what happen when 'Quit' Button Will Click
+quit.addEventListener("click", () => {
+    sendData();
+    
+});
