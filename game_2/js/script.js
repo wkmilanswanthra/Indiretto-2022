@@ -1,3 +1,8 @@
+var teamName = localStorage.getItem("group");
+if(!teamName){
+  window.location.replace("../index.html"); 
+}
+
 var game_over = localStorage.getItem('game_over');
 var savedAns = JSON.parse(localStorage.getItem("saved_ans"));
 if(savedAns){

@@ -1,3 +1,11 @@
+var teamName = localStorage.getItem("group");
+
+// variable for the team name
+
+if(!teamName){
+  window.location.replace("../index.html"); 
+}
+
 /*--------Things to do --------------*/
 
 
@@ -24,8 +32,7 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = app.firestore();
 
-// variable for the team name
-let teamName = "";
+
 
 // variable to contain the correct answers
 let validAns = [];
