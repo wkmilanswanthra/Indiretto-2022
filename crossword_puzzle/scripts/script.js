@@ -6,8 +6,6 @@
 /* migrate the solution to new fb project*/
 /* rename the solution variable using the correct doc name in fb*/
 
-
-
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAea2eh18zsrKWjcKuBCoVq8qGns-x-Xs8",
@@ -62,7 +60,7 @@ function addSquare() {
 
 // get the team name and save in a variable
 function getTeamName() {
-    teamName = "test-team3";
+    teamName = window.localStorage.getItem('group');
 }
 
 // function to add on click to submit/sav buttons
@@ -512,6 +510,7 @@ async function loadSave() {
 
 // function to populate hints and buttons
 function showHints() {
+    // import data.js
     document.getElementById("hints").innerHTML +=
         "<section class=\"section-2\">\n" +
         "        <div class=\"row\">\n" +
@@ -537,48 +536,41 @@ function showHints() {
         "            <div class=\"row\">\n" +
         "                <div class=\"col-sm-6 \">\n" +
         "                    <h5>Across</h5><br>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">2 - </span>What word is spelled incorrectly in every\n" +
-        "                        single\n" +
-        "                        dictionary?</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">6 - </span>A band that doesn’t play instruments, but has\n" +
-        "                        plenty of style</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">7 - </span>Most every day, you step on me. All I require\n" +
-        "                        isa\n" +
-        "                        bend of your knee</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">9 - </span>I’m tall when I’m young and short when I’m old\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">2 - </span>"+data[0].hint2+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">6 - </span>"+data[0].hint6+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">7 - </span>"+data[0].hint7+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">9 - </span>"+data[0].hint9+"\n" +
         "                    </p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">10 - </span>You use knobs to make me turn colder or\n" +
-        "                        hotter.\n" +
-        "                        You’d never know it, but my head is full of water</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">15 - </span>This coat can only be put on when wet</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">16 - </span>I have a spine, but no bones</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">17 - </span>Most have clothes on the outside, but I have\n" +
-        "                        clothes inside</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">18 - </span>I’m a bed without sheets, and I’m always dirty\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">10 - </span>"+data[0].hint10+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">15 - </span>"+data[0].hint15+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">16 - </span>"+data[0].hint16+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">17 - </span>"+data[0].hint17+"\n" +
+        "                       </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">18 - </span>"+data[0].hint18+"\n" +
         "                    </p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">19 - </span>I greet every guest, but never say a word</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">19 - </span>"+data[0].hint19+"</p>\n" +
         "                </div>\n" +
         "                <div class=\"col-sm-6 \">\n" +
         "                    <h5>Down</h5>\n" +
         "                    <br>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">1 - </span>I’m a shape and an instrument</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">3 - </span>What is always coming but never arrives?</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">4 - </span>I go up and down, but I never move</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">5 - </span>Stay tuned for this next clue. I have strings\n" +
-        "                        that\n" +
-        "                        can’t be tied</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">8 - </span>I start with an “e,” and I end with an “e,” but\n" +
-        "                        I\n" +
-        "                        contain only one letter</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">11 - </span>Which room has no walls?</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">12 - </span>You might say I’m popular– I always have\n" +
-        "                        themost\n" +
-        "                        dates</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">13 - </span>I always stay as still as can be. I have the\n" +
-        "                        powerto move, but not literally</p>\n" +
-        "                    <p class=\"hints-p\"><span class=\"hint-num\">14 - </span>If you have one, you want to share it. But\n" +
-        "                        onceyou\n" +
-        "                        share it, you do not have it. What is it?</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">1 - </span>"+data[0].hint1+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">3 - </span>"+data[0].hint3+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">4 - </span>"+data[0].hint4+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">5 - </span>"+data[0].hint5+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">8 - </span>"+data[0].hint8+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">11 - </span>"+data[0].hint11+"</p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">12 - </span>"+data[0].hint12+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">13 - </span>"+data[0].hint13+"\n" +
+        "                        </p>\n" +
+        "                    <p class=\"hints-p\"><span class=\"hint-num\">14 - </span>"+data[0].hint14+"\n" +
+        "                        </p>\n" +
         "                </div>\n" +
         "            </div>\n" +
         "        </div>\n" +
@@ -588,7 +580,7 @@ function showHints() {
 }
 
 // show next button
-function showNextBtn(){
+function showNextBtn() {
     showEle(document.getElementById("next-btn"));
     document.getElementById("next-btn").onclick = function () {
         location.href = "#";
