@@ -52,11 +52,18 @@ input {
     opacity: 1;
   }
   
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+
   /* Mark the steps that are finished and valid: */
   .step.finish {
     background-color: #0609f1;
   }
 
+  
 
   #mainimage{
     border: 3px solid gray;
